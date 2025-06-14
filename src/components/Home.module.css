@@ -1,0 +1,592 @@
+/* HomePage.module.css */
+.container {
+    display: flex;
+    min-height: 100vh;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #333;
+}
+
+/* Sidebar - Fixed Layout */
+.sidebar {
+    width: 280px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    padding: 2rem 2rem 2rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+}
+
+.logoTitle {
+    color: #667eea;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+/* Navigation Menu - Scrollable Area */
+.navMenuContainer {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 1rem 0;
+}
+
+.navMenu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navItem {
+    margin-bottom: 0.5rem;
+}
+
+.navLink {
+    display: flex;
+    align-items: center;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    color: #555;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.navLink:hover,
+.navLink.active {
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    color: white;
+    transform: translateX(5px);
+}
+
+.navIcon {
+    margin-right: 1rem;
+    font-size: 1.2rem;
+}
+
+/* Sidebar Footer pentru Logout - Fixed at Bottom */
+.sidebarFooter {
+    flex-shrink: 0;
+    padding: 20px 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+}
+
+.sidebarFooter .navLink {
+    color: #555;
+    transition: all 0.3s ease;
+}
+
+.sidebarFooter .navLink:hover {
+    color: #ff6b6b;
+    background: rgba(255, 107, 107, 0.1);
+    transform: translateX(5px);
+}
+
+/* Main Content - Adjusted for Fixed Sidebar */
+.mainContent {
+    flex: 1;
+    margin-left: 280px;
+    padding: 2rem;
+    overflow-y: auto;
+    min-height: 100vh;
+}
+
+/* Header Section cu User Info */
+.topHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.topHeader::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+    pointer-events: none;
+}
+
+.headerLeft {
+    z-index: 1;
+}
+
+.pageTitle {
+    font-size: 28px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0 0 5px 0;
+}
+
+.pageSubtitle {
+    font-size: 16px;
+    color: #666;
+    margin: 0;
+    font-weight: 400;
+}
+
+.headerRight {
+    position: relative;
+    z-index: 2;
+}
+
+/* User Info Section */
+.userInfo {
+    display: flex;
+    align-items: center;
+    background: rgba(102, 126, 234, 0.1);
+    padding: 12px 16px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(102, 126, 234, 0.2);
+    min-width: 250px;
+}
+
+.userInfo:hover {
+    background: rgba(102, 126, 234, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
+}
+
+.userDetails {
+    display: flex;
+    flex-direction: column;
+    margin-right: 12px;
+    flex: 1;
+    text-align: right;
+}
+
+.userName {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 2px;
+}
+
+.userEmail {
+    font-size: 12px;
+    color: #666;
+    font-weight: 400;
+}
+
+.userAvatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(102, 126, 234, 0.3);
+    margin-right: 8px;
+    transition: all 0.3s ease;
+}
+
+.userInfo:hover .userAvatar {
+    border-color: rgba(102, 126, 234, 0.6);
+    transform: scale(1.05);
+}
+
+.dropdownArrow {
+    color: #666;
+    font-size: 12px;
+    transition: transform 0.3s ease;
+}
+
+.userInfo:hover .dropdownArrow {
+    color: #333;
+}
+
+/* Dropdown Menu */
+.userDropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 8px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    min-width: 200px;
+    z-index: 1000;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    animation: dropdownFadeIn 0.3s ease;
+}
+
+@keyframes dropdownFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.dropdownItem {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 14px;
+    color: #333;
+}
+
+.dropdownItem:hover {
+    background: #f8f9fa;
+    color: #667eea;
+}
+
+.dropdownItem:last-child:hover {
+    background: #fef2f2;
+    color: #dc2626;
+}
+
+.dropdownIcon {
+    margin-right: 12px;
+    font-size: 16px;
+}
+
+.dropdownDivider {
+    height: 1px;
+    background: #e5e7eb;
+    margin: 8px 0;
+}
+
+.welcomeSection {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 3rem;
+    margin-bottom: 3rem;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.welcomeTitle {
+    font-size: 3rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+}
+
+.welcomeSubtitle {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ctaButton {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+}
+
+.ctaButton:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+}
+
+/* Top Destinations */
+.destinationsSection {
+    margin-top: 3rem;
+}
+
+.sectionTitle {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 2rem;
+    text-align: center;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.destinationsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.destinationCard {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.destinationCard:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+}
+
+.cardImage {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.cardOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.destinationCard:hover .cardOverlay {
+    opacity: 1;
+}
+
+.cardContent {
+    padding: 1.5rem;
+}
+
+.cardTitle {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.cardDescription {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.cardPrice {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #667eea;
+}
+
+/* Animations */
+.cardAnimated {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: all 0.6s ease;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        max-height: none;
+        flex-direction: row;
+        padding: 1rem;
+    }
+
+    .logo {
+        padding: 0;
+        border-bottom: none;
+        border-right: 1px solid rgba(0, 0, 0, 0.1);
+        margin-right: 1rem;
+    }
+
+    .logoTitle {
+        font-size: 1.4rem;
+    }
+
+    .navMenuContainer {
+        flex: 1;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding: 0;
+    }
+
+    .navMenu {
+        display: flex;
+        gap: 1rem;
+        padding: 0 1rem;
+    }
+
+    .navItem {
+        margin-right: 0;
+        margin-bottom: 0;
+        white-space: nowrap;
+    }
+
+    .navLink {
+        white-space: nowrap;
+        padding: 0.5rem 1rem;
+        border-radius: 25px;
+    }
+
+    .navLink:hover,
+    .navLink.active {
+        transform: none;
+    }
+
+    .sidebarFooter {
+        border-top: none;
+        border-left: 1px solid rgba(0, 0, 0, 0.1);
+        padding: 0 0 0 1rem;
+    }
+
+    .sidebarFooter .navLink {
+        padding: 0.5rem 1rem;
+        border-radius: 25px;
+        white-space: nowrap;
+    }
+
+    .sidebarFooter .navLink:hover {
+        transform: none;
+    }
+
+    .mainContent {
+        margin-left: 0;
+        padding: 1rem;
+    }
+
+    .topHeader {
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .headerLeft {
+        order: 2;
+    }
+
+    .headerRight {
+        order: 1;
+        align-self: stretch;
+    }
+
+    .userInfo {
+        justify-content: center;
+        min-width: auto;
+        width: 100%;
+    }
+
+    .userDetails {
+        text-align: center;
+        margin-right: 8px;
+    }
+
+    .pageTitle {
+        font-size: 24px;
+    }
+
+    .pageSubtitle {
+        font-size: 14px;
+    }
+
+    .welcomeTitle {
+        font-size: 2rem;
+    }
+
+    .destinationsGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .userInfo {
+        padding: 10px 12px;
+    }
+
+    .userAvatar {
+        width: 35px;
+        height: 35px;
+    }
+
+    .userName {
+        font-size: 13px;
+    }
+
+    .userEmail {
+        font-size: 11px;
+    }
+
+    .userDropdown {
+        left: 0;
+        right: 0;
+        margin-top: 8px;
+    }
+
+    .sidebar {
+        flex-wrap: wrap;
+    }
+
+    .logo {
+        flex-basis: 100%;
+        border-right: none;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        margin-right: 0;
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+
+    .navMenuContainer {
+        flex-basis: 70%;
+    }
+
+    .sidebarFooter {
+        flex-basis: 30%;
+        border-left: 1px solid rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
